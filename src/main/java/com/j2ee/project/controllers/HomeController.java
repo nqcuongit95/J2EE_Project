@@ -15,7 +15,7 @@ import com.j2ee.project.services.DepartmentService;
  
 
 @Controller
-public class MainController {
+public class HomeController {
  
  @Autowired
  private DepartmentService departmentDAO;
