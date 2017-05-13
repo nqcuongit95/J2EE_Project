@@ -1,5 +1,5 @@
 package com.j2ee.project.entities;
-// Generated May 11, 2017 9:38:14 AM by Hibernate Tools 5.2.1.Final
+// Generated May 13, 2017 8:58:41 PM by Hibernate Tools 5.2.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,17 +25,19 @@ public class Sach implements java.io.Serializable {
 	private Integer soBan;
 	private Date ngayTao;
 	private String ghiChu;
+	private String imageUrl;
 
 	public Sach() {
 	}
 
-	public Sach(String maSach, String ten, String tomTat, Integer soBan, Date ngayTao, String ghiChu) {
+	public Sach(String maSach, String ten, String tomTat, Integer soBan, Date ngayTao, String ghiChu, String imageUrl) {
 		this.maSach = maSach;
 		this.ten = ten;
 		this.tomTat = tomTat;
 		this.soBan = soBan;
 		this.ngayTao = ngayTao;
 		this.ghiChu = ghiChu;
+		this.imageUrl = imageUrl;
 	}
 
 	@Id
@@ -103,6 +105,15 @@ public class Sach implements java.io.Serializable {
 
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
+	}
+
+	@Column(name = "ImageUrl", length = 1000)
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 }
