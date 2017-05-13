@@ -3,7 +3,7 @@
 *.sonarj
 *.sw*
 .DS_Store
-.settings
+
 .springBeans
 bin
 build.sh
