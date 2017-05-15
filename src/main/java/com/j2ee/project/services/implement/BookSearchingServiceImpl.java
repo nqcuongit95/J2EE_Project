@@ -21,8 +21,9 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 	public List<Sach> FindBookByTitle(String title) {
 		
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from Sach where ten = :title");
-		query.setParameter("title", title);
+		String str = "from Sach where Ten LIKE :key or TomTat LIKE :key or MaSach LIKE :key";
+		Query query = session.createQuery(str);
+		query.setParameter("key","%" + title + "%");
 		
 		List<Sach> results = query.getResultList();
 		

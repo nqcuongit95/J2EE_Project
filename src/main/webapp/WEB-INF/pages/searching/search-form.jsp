@@ -1,5 +1,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:url var="home" value="/" />
+<c:url var="defaultBookCoverUrl" value="/resources/img/book.jpg" />
 
 <form class="ui form" id="searchForm">
 	<div class="field">
@@ -36,5 +38,11 @@
 	<div class="ui primary button">Find</div>
 	<div class="ui reset button">Clear</div>
 </form>
+
+
+<script>
+var baseUrl = "${home}";
+var defaultBookCoverUrl = "${defaultBookCoverUrl}";
+</script>
 
 <script src="<c:url value="/resources/js/search.js" />"></script>

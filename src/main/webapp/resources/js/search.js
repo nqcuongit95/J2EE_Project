@@ -19,12 +19,13 @@ $(document).ready(function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/BookstoreRenting/search/findBook",
+			url : baseUrl + "search/findBook",
 			data : JSON.stringify(search),
 			dataType : 'json',
 			// timeout : 100000,
 			success : function(data) {
 				console.log("SUCCESS: ", data);
+				showResults(data);
 			},
 			error : function(e) {
 				console.log("ERROR: ", e);
@@ -33,6 +34,42 @@ $(document).ready(function() {
 				console.log("DONE");
 			}
 		});
+	};
+	
+	function showResults(data){
+		
+		$.each(data.results, function(index, book){
+			
+		var html ='<div class="item">'
+				  + '<div class="blurring dimmable image">'
+				  + '<div class="ui dimmer">'
+				  + '<div class="content">'
+				  + '<div class="center">'
+				  + '<div class="ui inverted button">Add Friend</div>'
+				  + '</div>'
+				  + '</div>'
+				  + '</div>'
+				  + '<img src="' + defaultBookCoverUrl + '">'
+				  + '</div>'
+				  + '<div class="content">'
+				  + '<a class="header">'+ book.ten +'</a>'
+				  + '<div class="meta">'
+				  + '<span class="date">'+ '<b>ISBN: </b>' + book.maSach +'</span>'
+				  + '</div>'
+				  + '<div class="description">'
+				  + '<p>' + book.tomTat +'</p>'
+				  + '</div>'
+				  + '<div class="extra">'
+				  + '<div class="ui label">'				  
+				  + 'poem'
+				  + '</div>'
+				  + '</div>'
+				  + '</div>'
+				  + '</div>';
+		
+		$('#search-results').append(html);
+		});
+		
 	};
 
 })
