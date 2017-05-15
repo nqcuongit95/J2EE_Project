@@ -24,7 +24,7 @@
 		<put-attribute name="title" value="Searching Books" />
 		<put-attribute name="body"
 			value="/WEB-INF/pages/searching/search.jsp" />
-	</definition>
+	</definition>	
 
 	<!-- ContactUs Page -->
 	<definition name="contactusPage" extends="base.definition">

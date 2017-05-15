@@ -1,11 +1,12 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<form class="ui form">
+<form class="ui form" id="searchForm">
 	<div class="field">
 		<div class="ui icon input">
-			<input type="text" placeholder="Enter book's name, content..." name="content"> <i
-				class="circular search link icon"></i>
+			<input type="text" placeholder="Enter book's name, content..." 
+				   name="content" id="main-content-search"> 
+			<i class="circular search link icon"></i>
 		</div>
 	</div>
 	<div class="fields">
@@ -32,7 +33,7 @@
 				placeholder="date published" name="content"> 
 		</div>
 	</div>
-	<div class="ui primary button" type="submit">Find</div>
+	<div class="ui primary button">Find</div>
 	<div class="ui reset button">Clear</div>
 </form>
 

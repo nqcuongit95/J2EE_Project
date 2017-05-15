@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h2 class="ui dividing header">Searching Books</h2>
 
