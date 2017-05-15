@@ -9,5 +9,9 @@
      <property name="sessionFactory" ref="mySessionFactory" />
  </bean>
  
+ <bean id="bookSearchingService" class="com.j2ee.project.services.implement.BookSearchingServiceImpl">
+     <property name="sessionFactory" ref="mySessionFactory" />
+ </bean>
+ 
  
 </beans>
