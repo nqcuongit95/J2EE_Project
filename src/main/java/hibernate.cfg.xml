@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC
-"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
@@ -12,9 +10,8 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping class="com.j2ee.project.entities.Thongtinmuonsach" />
-        <mapping class="com.j2ee.project.entities.Chitietsach" />
-        <mapping class="com.j2ee.project.entities.Chitietthongtinmuonsach" />
-        <mapping class="com.j2ee.project.entities.Sach" />
+        <mapping class="com.j2ee.project.entities.Thongtinmuonsach"/>
+        <mapping class="com.j2ee.project.entities.Chitietthongtinmuonsach"/>
+        <mapping class="com.j2ee.project.entities.Sach"/>
     </session-factory>
 </hibernate-configuration>

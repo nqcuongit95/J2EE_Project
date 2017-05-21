@@ -1,6 +1,7 @@
 package com.j2ee.project.entities;
-// Generated May 13, 2017 8:58:41 PM by Hibernate Tools 5.2.1.Final
+// Generated May 21, 2017 7:57:14 PM by Hibernate Tools 5.2.3.Final
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,21 +22,28 @@ public class Sach implements java.io.Serializable {
 	private Integer id;
 	private String maSach;
 	private String ten;
+	private String tacGia;
 	private String tomTat;
 	private Integer soBan;
+	private String isbn;
 	private Date ngayTao;
+	private BigDecimal giaMuon;
 	private String ghiChu;
 	private String imageUrl;
 
 	public Sach() {
 	}
 
-	public Sach(String maSach, String ten, String tomTat, Integer soBan, Date ngayTao, String ghiChu, String imageUrl) {
+	public Sach(String maSach, String ten, String tacGia, String tomTat, Integer soBan, String isbn, Date ngayTao,
+			BigDecimal giaMuon, String ghiChu, String imageUrl) {
 		this.maSach = maSach;
 		this.ten = ten;
+		this.tacGia = tacGia;
 		this.tomTat = tomTat;
 		this.soBan = soBan;
+		this.isbn = isbn;
 		this.ngayTao = ngayTao;
+		this.giaMuon = giaMuon;
 		this.ghiChu = ghiChu;
 		this.imageUrl = imageUrl;
 	}
@@ -70,6 +78,15 @@ public class Sach implements java.io.Serializable {
 		this.ten = ten;
 	}
 
+	@Column(name = "TacGia", length = 2000)
+	public String getTacGia() {
+		return this.tacGia;
+	}
+
+	public void setTacGia(String tacGia) {
+		this.tacGia = tacGia;
+	}
+
 	@Column(name = "TomTat", length = 1000)
 	public String getTomTat() {
 		return this.tomTat;
@@ -88,6 +105,15 @@ public class Sach implements java.io.Serializable {
 		this.soBan = soBan;
 	}
 
+	@Column(name = "ISBN", length = 2000)
+	public String getIsbn() {
+		return this.isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "NgayTao", length = 19)
 	public Date getNgayTao() {
@@ -96,6 +122,15 @@ public class Sach implements java.io.Serializable {
 
 	public void setNgayTao(Date ngayTao) {
 		this.ngayTao = ngayTao;
+	}
+
+	@Column(name = "GiaMuon", scale = 4)
+	public BigDecimal getGiaMuon() {
+		return this.giaMuon;
+	}
+
+	public void setGiaMuon(BigDecimal giaMuon) {
+		this.giaMuon = giaMuon;
 	}
 
 	@Column(name = "GhiChu", length = 2000)
