@@ -15,11 +15,11 @@ public class SearchingBookResults {
 		this.msg = msg;
 	}
 
-	public List<Sach> getResults() {
+	public List<BookData> getResults() {
 		return results;
 	}
 
-	public void setResults(List<Sach> results) {
+	public void setResults(List<BookData> results) {
 		this.results = results;
 	}
 
@@ -27,5 +27,5 @@ public class SearchingBookResults {
 	String msg;
 	
 	@JsonView(Views.Show.class)
-	List<Sach> results;
+	List<BookData> results;
 }

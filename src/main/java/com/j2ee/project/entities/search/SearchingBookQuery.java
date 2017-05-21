@@ -4,25 +4,27 @@ import java.util.List;
 
 public class SearchingBookQuery {
 
-	private String title;
-	private String description;
+	private String keyword;
 	private List<String> categories;
 	private List<String> authors;
+	private String datePublished;
 
-	public String getTitle() {
-		return title;
+	
+	
+	public String getKeyword() {
+		return keyword;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDatePublished() {
+		return datePublished;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDatePublished(String datePublished) {
+		this.datePublished = datePublished;
 	}
 
 	public List<String> getCategories() {
