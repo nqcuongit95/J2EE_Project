@@ -15,8 +15,8 @@
 
 	<!-- Home Page -->
 	<definition name="homePage" extends="base.definition">
-		<put-attribute name="title" value="Welcome to Bookstore Renting" />	
-		<put-attribute name="body" value="/WEB-INF/pages/index.jsp" />	
+		<put-attribute name="title" value="Welcome to Bookstore Renting" />
+		<put-attribute name="body" value="/WEB-INF/pages/index.jsp" />
 	</definition>
 
 	<!-- ContactUs Page -->
@@ -24,6 +24,36 @@
 		<put-attribute name="title" value="Contact Us" />
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_contactus.jsp" />
+	</definition>
+
+	<!-- Book Index Page -->
+	<definition name="bookIndex" extends="base.definition">
+		<put-attribute name="title" value="Welcome to Bookstore Renting" />
+		<put-attribute name="body" value="/WEB-INF/pages/book/index.jsp" />
+	</definition>
+
+	<!-- Book Create Page -->
+	<definition name="bookCreate" extends="base.definition">
+		<put-attribute name="title" value="Welcome to Bookstore Renting" />
+		<put-attribute name="body" value="/WEB-INF/pages/book/create.jsp" />
+	</definition>
+
+	<!-- Book Details Page -->
+	<definition name="bookDetails" extends="base.definition">
+		<put-attribute name="title" value="Welcome to Bookstore Renting" />
+		<put-attribute name="body" value="/WEB-INF/pages/book/details.jsp" />
+	</definition>
+
+	<!-- Book Details Page -->
+	<definition name="bookUpdate" extends="base.definition">
+		<put-attribute name="title" value="Welcome to Bookstore Renting" />
+		<put-attribute name="body" value="/WEB-INF/pages/book/update.jsp" />
+	</definition>
+
+	<!-- Book Delete Page -->
+	<definition name="bookDelete" extends="base.definition">
+		<put-attribute name="title" value="Welcome to Bookstore Renting" />
+		<put-attribute name="body" value="/WEB-INF/pages/book/delete.jsp" />
 	</definition>
 
 </tiles-definitions>

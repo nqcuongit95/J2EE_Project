@@ -1,5 +1,5 @@
 package com.j2ee.project.entities;
-// Generated May 21, 2017 7:57:14 PM by Hibernate Tools 5.2.3.Final
+// Generated May 22, 2017 11:53:47 AM by Hibernate Tools 5.2.3.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -30,12 +30,13 @@ public class Sach implements java.io.Serializable {
 	private BigDecimal giaMuon;
 	private String ghiChu;
 	private String imageUrl;
+	private String theLoai;
 
 	public Sach() {
 	}
 
 	public Sach(String maSach, String ten, String tacGia, String tomTat, Integer soBan, String isbn, Date ngayTao,
-			BigDecimal giaMuon, String ghiChu, String imageUrl) {
+			BigDecimal giaMuon, String ghiChu, String imageUrl, String theLoai) {
 		this.maSach = maSach;
 		this.ten = ten;
 		this.tacGia = tacGia;
@@ -46,6 +47,7 @@ public class Sach implements java.io.Serializable {
 		this.giaMuon = giaMuon;
 		this.ghiChu = ghiChu;
 		this.imageUrl = imageUrl;
+		this.theLoai = theLoai;
 	}
 
 	@Id
@@ -149,6 +151,15 @@ public class Sach implements java.io.Serializable {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	@Column(name = "TheLoai", length = 1000)
+	public String getTheLoai() {
+		return this.theLoai;
+	}
+
+	public void setTheLoai(String theLoai) {
+		this.theLoai = theLoai;
 	}
 
 }
