@@ -14,8 +14,8 @@ $(document).ready(function() {
 	function searchBook() {
 
 		var search = {};
-		search["title"] = $('#main-content-search').val();
-
+		search["keyword"] = $('#main-content-search').val();
+		
 		$.ajax({
 			type : "POST",
 			contentType : "application/json",
@@ -52,20 +52,25 @@ $(document).ready(function() {
 				  + '<img src="' + defaultBookCoverUrl + '">'
 				  + '</div>'
 				  + '<div class="content">'
-				  + '<a class="header">'+ book.ten +'</a>'
+				  + '<a class="header">'+ book.title +'</a>'
 				  + '<div class="meta">'
-				  + '<span class="date">'+ '<b>ISBN: </b>' + book.maSach +'</span>'
+				  + '<span class="date">'+ '<b>ISBN: </b>' + book.ISBN +'</span>'
 				  + '</div>'
 				  + '<div class="description">'
-				  + '<p>' + book.tomTat +'</p>'
-				  + '</div>'
-				  + '<div class="extra">'
-				  + '<div class="ui label">'				  
-				  + 'poem'
-				  + '</div>'
-				  + '</div>'
-				  + '</div>'
+				  + '<p>' + book.description +'</p>'
 				  + '</div>';
+				  + '<div class="extra">'
+				// categories
+				$.each(book.categories, function(index, category){					
+				  html+= '<div class="ui label">'				  
+					  + category					  
+					  + '</div>';
+				});
+		
+							  
+				  html+= '</div>'
+					  + '</div>';
+				  	  + '</div>';
 		
 		$('#search-results').append(html);
 		});

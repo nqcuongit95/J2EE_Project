@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.j2ee.project.entities.search.BookData;
 import com.j2ee.project.entities.search.SearchingBookQuery;
 import com.j2ee.project.entities.search.SearchingBookResults;
 import com.j2ee.project.services.BookSearchingService;
@@ -25,7 +26,7 @@ public class SearchAPI {
 	public SearchingBookResults FindBook(@RequestBody SearchingBookQuery model) {
 
 		SearchingBookResults results = new SearchingBookResults();
-		List<Sach> listBook = bookSerachingService.FindBookByTitle(model.getTitle());
+		List<BookData> listBook = bookSerachingService.FindBook(model);
 
 		results.setResults(listBook);
 		if (listBook.isEmpty()) {
