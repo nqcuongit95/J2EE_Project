@@ -1,5 +1,7 @@
 package com.j2ee.project.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ public class SearchController {
 	private BookSearchingService bookSerachingService;
 
 	@RequestMapping("/search")
-	public String Search(Model model) {
+	public String Search(Model model) {				
 		return "searchPage";
 	}
 }

@@ -1,13 +1,25 @@
 $(document).ready(function() {
+	
+	$('#book-category-input').dropdown({				
+		apiSettings: {
+			url: baseUrl + "/search/findCategory?query={query}",
+			saveRemoteData: 'false',			
+		}
+		
+	});
 
-	$('#book-category-input').dropdown();
-
-	$('#book-author-input').dropdown();
+	$('#book-author-input').dropdown({				
+		apiSettings: {
+			url: baseUrl + "/search/findAuthor?query={query}",
+			saveRemoteData: 'false',			
+		}
+		
+	});
 
 	$('#searchForm .primary.button').on('click', function() {
 
 		event.preventDefault();
-		console.log('test');
+				
 		searchBook(); 
 	});
 
@@ -15,6 +27,17 @@ $(document).ready(function() {
 
 		var search = {};
 		search["keyword"] = $('#main-content-search').val();
+		
+		var category = $('#book-category-input').dropdown('get value');	
+		
+		if(category){
+			search["categories"] = category.split(',');			
+		}
+		
+		var author = $('#book-author-input').dropdown('get value');
+		if(author){
+			search["authors"] = author.split(',');
+		}		
 		
 		$.ajax({
 			type : "POST",

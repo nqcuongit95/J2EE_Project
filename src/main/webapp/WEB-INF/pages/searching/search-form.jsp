@@ -1,38 +1,39 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <c:url var="home" value="/" />
 <c:url var="defaultBookCoverUrl" value="/resources/img/book.jpg" />
 
 <form class="ui form" id="searchForm">
 	<div class="field">
 		<div class="ui icon input">
-			<input type="text" placeholder="Enter book's name, content..." 
-				   name="content" id="main-content-search"> 
-			<i class="circular search link icon"></i>
+			<input type="text" placeholder="Enter book's name, content..."
+				name="content" id="main-content-search"> <i
+				class="circular search link icon"></i>
 		</div>
 	</div>
 	<div class="fields">
 		<div class="seven wide field">
 			<label>Book Category</label> 
-			<select name="skills" multiple=""
-				class="ui fluid dropdown" id="book-category-input">
-				<option value="">category</option>
-				<option value="angular">Angular</option>
-				<option value="css">CSS</option>
-				<option value="design">Graphic Design</option>
-			</select>
+			<div class="ui multiple search selection dropdown" id="book-category-input">
+              <input type="hidden">
+              <i class="dropdown icon"></i>
+              <input type="text" class="search">
+              <div class="default text">category...</div>
+            </div>
 		</div>
 		<div class="four wide field">
 			<label>Author</label>
-			<select name="skills" class="ui fluid search dropdown" 
-					multiple="" id="book-author-input">
-				<option value="">author</option>
-			</select>
+			<div class="ui multiple search selection dropdown" id="book-author-input">
+              <input type="hidden">
+              <i class="dropdown icon"></i>
+              <input type="text" class="search">
+              <div class="default text">author...</div>
+            </div>			
 		</div>
 		<div class="five wide field">
-			<label>Date published</label> 
-			<input type="text"
-				placeholder="date published" name="content"> 
+			<label>Date published</label> <input type="text"
+				placeholder="date published" name="content">
 		</div>
 	</div>
 	<div class="ui primary button">Find</div>
@@ -41,8 +42,8 @@
 
 
 <script>
-var baseUrl = "${home}";
-var defaultBookCoverUrl = "${defaultBookCoverUrl}";
+	var baseUrl = "${home}";
+	var defaultBookCoverUrl = "${defaultBookCoverUrl}";
 </script>
 
 <script src="<c:url value="/resources/js/search.js" />"></script>
