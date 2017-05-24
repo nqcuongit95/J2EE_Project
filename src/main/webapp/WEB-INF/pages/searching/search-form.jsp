@@ -40,7 +40,6 @@
 	<div class="ui reset button">Clear</div>
 </form>
 
-
 <script>
 	var baseUrl = "${home}";
 	var defaultBookCoverUrl = "${defaultBookCoverUrl}";

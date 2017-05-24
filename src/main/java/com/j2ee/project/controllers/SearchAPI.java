@@ -60,7 +60,6 @@ public class SearchAPI {
 	@RequestMapping(value="/search/allAuthor")
 	public ApiResult<DropdownData> FindAuthor(){
 		
-		System.out.println("run fdafdsaf");
 		ApiResult<DropdownData> result = bookSerachingService.GetAllAuthor();
 		
 		return result;

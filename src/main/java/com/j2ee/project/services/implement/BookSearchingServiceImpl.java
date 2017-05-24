@@ -244,5 +244,4 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 			return result;
 		}
 	}
-
 }

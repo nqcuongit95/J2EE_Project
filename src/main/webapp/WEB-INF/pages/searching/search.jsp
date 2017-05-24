@@ -9,4 +9,3 @@
 </h4>
 	
 <jsp:include page="/WEB-INF/pages/searching/search-results.jsp" />
-
