@@ -4,7 +4,7 @@
 
 <jsp:include page="/WEB-INF/pages/searching/search-form.jsp"/>
 
-<h4 class="ui horizontal divider header">
+<h4 class="ui horizontal divider header" id="divider-result">
 	<i class="search icon"></i> Results
 </h4>
 	

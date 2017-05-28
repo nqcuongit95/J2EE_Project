@@ -20,6 +20,10 @@ $(document).ready(function() {
 
 		event.preventDefault();
 				
+		//show loading status
+		$('#divider-result i').removeClass('search');
+		$('#divider-result i').addClass('spinner loading');
+		
 		searchBook(); 
 	});
 
@@ -48,6 +52,11 @@ $(document).ready(function() {
 			// timeout : 100000,
 			success : function(data) {
 				console.log("SUCCESS: ", data);
+				
+				//update loading status
+				$('#divider-result i').removeClass('spinner loading');
+				$('#divider-result i').addClass('search');
+				
 				clearResults();
 				setTimeout(function(){
 					showResults(data);
