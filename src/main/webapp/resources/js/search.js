@@ -48,7 +48,11 @@ $(document).ready(function() {
 			// timeout : 100000,
 			success : function(data) {
 				console.log("SUCCESS: ", data);
-				showResults(data);
+				clearResults();
+				setTimeout(function(){
+					showResults(data);
+				},500)
+				
 			},
 			error : function(e) {
 				console.log("ERROR: ", e);
@@ -59,11 +63,21 @@ $(document).ready(function() {
 		});
 	};
 	
+	function clearResults(){
+		$('#search-results .item').each(function(){
+			$(this).fadeTo('slow',0,function(){				
+				$(this).remove();
+			})
+		});
+		
+		
+	}
+	
 	function showResults(data){
 		
 		$.each(data.results, function(index, book){
 			
-		var html ='<div class="item">'
+		var html ='<div class="item" style="display: none;">'
 				  + '<div class="blurring dimmable image">'
 				  + '<div class="ui dimmer">'
 				  + '<div class="content">'
@@ -95,7 +109,9 @@ $(document).ready(function() {
 					  + '</div>';
 				  	  + '</div>';
 		
-		$('#search-results').append(html);
+		var $elem = $(html);		  	  
+		$('#search-results').append($elem);
+		$elem.fadeIn('300');
 		});
 		
 	};
