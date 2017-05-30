@@ -73,7 +73,7 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 			pAuthor = exp.in(authors);
 			predicates.add(pAuthor);
 		}
-		
+
 		cq.select(sachRoot).where(cb.and(predicates.toArray(new Predicate[] {})));
 		TypedQuery<Sach> q = em.createQuery(cq);
 
@@ -93,6 +93,7 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 			bookData.setDescription(sach.getTomTat());
 			bookData.setImageUrl(sach.getImageUrl());
 			bookData.setISBN(sach.getIsbn());
+			bookData.setId(sach.getId());
 
 			result.add(bookData);
 		}
@@ -131,7 +132,7 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 		return result;
 	}
 
-	public ApiResult<DropdownData> FindAuthor(String query) {	
+	public ApiResult<DropdownData> FindAuthor(String query) {
 
 		Session session = this.sessionFactory.getCurrentSession();
 		EntityManager em = session.getEntityManagerFactory().createEntityManager();
@@ -171,13 +172,13 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 	}
 
 	public ApiResult<DropdownData> GetAllAuthor() {
-		
+
 		Session session = this.sessionFactory.getCurrentSession();
 		EntityManager em = session.getEntityManagerFactory().createEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<String> cq = cb.createQuery(String.class);
 		Root<Sach> sachRoot = cq.from(Sach.class);
-		
+
 		cq.select(sachRoot.<String>get("tacGia")).distinct(true);
 
 		TypedQuery<String> q = em.createQuery(cq);
@@ -204,20 +205,20 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 
 			result.setSuccess("false");
 			return result;
-		}				
+		}
 	}
 
 	public ApiResult<DropdownData> FindCategory(String query) {
-		
+
 		Session session = this.sessionFactory.getCurrentSession();
 		EntityManager em = session.getEntityManagerFactory().createEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<String> cq = cb.createQuery(String.class);
 		Root<Sach> sachRoot = cq.from(Sach.class);
-		
+
 		Predicate pCategory = cb.like(sachRoot.<String>get("theLoai"), "%" + query + "%");
 		cq.select(sachRoot.<String>get("theLoai")).where(pCategory).distinct(true);
-		
+
 		TypedQuery<String> q = em.createQuery(cq);
 		List<String> category = q.getResultList();
 
@@ -243,5 +244,36 @@ public class BookSearchingServiceImpl implements BookSearchingService {
 			result.setSuccess("false");
 			return result;
 		}
+	}
+
+	public BookData GetBookDetails(int id) {
+
+		Session session = this.sessionFactory.getCurrentSession();
+		EntityManager em = session.getEntityManagerFactory().createEntityManager();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Sach> cq = cb.createQuery(Sach.class);
+		Root<Sach> sachRoot = cq.from(Sach.class);
+
+		Predicate p = cb.equal(sachRoot.<String>get("id"), id);
+		cq.select(sachRoot).where(p);
+
+		TypedQuery<Sach> q = em.createQuery(cq);
+		List<Sach> book = q.getResultList();
+								
+		BookData bookData = new BookData();
+
+		List<String> auths = Arrays.asList(book.get(0).getTacGia().split(","));
+		List<String> categ = Arrays.asList(book.get(0).getTheLoai().split(","));
+
+		bookData.setTitle(book.get(0).getTen());
+		bookData.setAuthors(auths);
+		bookData.setCategories(categ);
+		bookData.setDescription(book.get(0).getTomTat());
+		bookData.setImageUrl(book.get(0).getImageUrl());
+		bookData.setISBN(book.get(0).getIsbn());
+		bookData.setId(book.get(0).getId());		
+		bookData.setRentPrice(book.get(0).getGiaMuon());
+		
+		return bookData;
 	}
 }

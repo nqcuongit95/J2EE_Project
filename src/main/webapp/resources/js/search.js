@@ -1,5 +1,10 @@
 $(document).ready(function() {
 	
+	
+	$.fn.api.settings.api = {
+			  'view details' : baseUrl + 'book/details/{id}'			  
+			};	
+	
 	$('#book-category-input').dropdown({				
 		apiSettings: {
 			url: baseUrl + "/search/findCategory?query={query}",
@@ -87,14 +92,7 @@ $(document).ready(function() {
 		$.each(data.results, function(index, book){
 			
 		var html ='<div class="item" style="display: none;">'
-				  + '<div class="blurring dimmable image">'
-				  + '<div class="ui dimmer">'
-				  + '<div class="content">'
-				  + '<div class="center">'
-				  + '<div class="ui inverted button">Add Friend</div>'
-				  + '</div>'
-				  + '</div>'
-				  + '</div>'
+				  + '<div class="image">'		  
 				  + '<img src="' + defaultBookCoverUrl + '">'
 				  + '</div>'
 				  + '<div class="content">'
@@ -104,8 +102,11 @@ $(document).ready(function() {
 				  + '</div>'
 				  + '<div class="description">'
 				  + '<p>' + book.description +'</p>'
-				  + '</div>';
+				  + '</div>'
 				  + '<div class="extra">'
+				  + '<div class="ui right floated primary button">Detail'				 
+				  + '<i class="right chevron icon"></i>'
+				  + '</div>';
 				// categories
 				$.each(book.categories, function(index, category){					
 				  html+= '<div class="ui label">'				  
@@ -118,10 +119,41 @@ $(document).ready(function() {
 					  + '</div>';
 				  	  + '</div>';
 		
-		var $elem = $(html);		  	  
+		var $elem = $(html);	
+		
+//		$elem.find('.button').attr({
+//			'data-action' : "view details",
+//			'data-id': book.id
+//		})
+		
+		$elem.find('.button').api({
+			action: 'view details',
+			urlData: {
+			      id: book.id
+			},
+			onSuccess: function(response) {
+			    
+				setModalData(response);
+				
+			},			   
+		})
+		
 		$('#search-results').append($elem);
 		$elem.fadeIn('300');
 		});
 		
 	};
+	
+	function setModalData(response){
+		var $modal = $('#bookModal');
+		
+		$modal.find('img').attr('src',defaultBookCoverUrl);
+		$modal.find('.ui.header').text(response.title);
+		$modal.find('#description').text(response.description);
+		$modal.find('#category').html('<b>Category: </b>' + response.categories[0]);
+		$modal.find('#author').html('<b>Author: </b>'+ response.authors[0]);
+		$modal.find('#rent-price').html('<b>Renting price: </b>' +response.rentPrice +'$');
+		
+		$modal.modal('show');
+	}
 })

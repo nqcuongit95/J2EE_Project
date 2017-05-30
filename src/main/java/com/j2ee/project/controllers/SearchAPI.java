@@ -1,11 +1,13 @@
 
 package com.j2ee.project.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,6 +65,14 @@ public class SearchAPI {
 		ApiResult<DropdownData> result = bookSerachingService.GetAllAuthor();
 		
 		return result;
+	}
+	
+	@RequestMapping(value="/book/details/{id}")
+	public BookData BookDetails(@PathVariable int id){
+				
+		BookData book = bookSerachingService.GetBookDetails(id);
+		
+		return book;
 	}
 
 }

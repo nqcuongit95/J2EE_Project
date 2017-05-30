@@ -15,5 +15,5 @@ public interface BookSearchingService {
 	ApiResult<DropdownData> FindAuthor(String query);
 	ApiResult<DropdownData> FindCategory(String query);
 	ApiResult<DropdownData> GetAllAuthor();
-	
+	BookData GetBookDetails(int id);
 }

@@ -1,5 +1,6 @@
 package com.j2ee.project.entities.search;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -23,7 +24,23 @@ public class BookData {
 	String publisher;
 	@JsonView(Views.Show.class)
 	String imageUrl;
+	@JsonView(Views.Show.class)
+	int id;
+	@JsonView(Views.Show.class)
+	BigDecimal rentPrice;
 	
+	public BigDecimal getRentPrice() {
+		return rentPrice;
+	}
+	public void setRentPrice(BigDecimal rentPrice) {
+		this.rentPrice = rentPrice;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getTitle() {
 		return title;
 	}
