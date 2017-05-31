@@ -16,6 +16,25 @@
 		<div class="ui horizontal divider header">Update book</div>
 	</div>
 
+	<c:choose>
+		<c:when test="${empty sach.imageUrl}">
+			<img class="ui centered medium image"
+				src="https://pbs.twimg.com/profile_images/600060188872155136/st4Sp6Aw.jpg">
+		</c:when>
+		<c:otherwise>
+			<img class="ui centered medium image"
+				src="/BookstoreRenting/${sach.imageUrl}" />
+		</c:otherwise>
+	</c:choose>
+
+	<form method="POST" action="<c:url value="/book/uploadImage" />"
+		enctype="multipart/form-data">
+		<input type="hidden" name="id" value="${sach.id}"> <input
+			type="file" name="file" id="file" accept="image/*"> <input
+			type="submit" value="Upload Image" name="submit"
+			class="ui primary button" />
+	</form>
+
 	<form id="book-crud-form" class="ui form"
 		action="<c:url value="/book/updateConfirm" />" method="post">
 		<h4 class="ui dividing header">Book Information</h4>
