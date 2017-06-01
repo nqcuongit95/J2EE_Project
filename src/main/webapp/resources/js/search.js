@@ -2,7 +2,8 @@ $(document).ready(function() {
 	
 	
 	$.fn.api.settings.api = {
-			  'view details' : baseUrl + 'book/details/{id}'			  
+			  'view details' : baseUrl + 'book/details/{id}',
+			  'mark for renting' : baseUrl + '/book/renting/add/{id}'
 			};	
 	
 	$('#book-category-input').dropdown({				
@@ -104,9 +105,26 @@ $(document).ready(function() {
 				  + '<p>' + book.description +'</p>'
 				  + '</div>'
 				  + '<div class="extra">'
-				  + '<div class="ui right floated primary button">Detail'				 
+				  
+				  if (book.added === 'true') {
+					  html += '<div class="ui right floated right labeled positive basic icon button" id="mark-btn">Add for renting'				 
+					  + '<i class="checkmark icon"></i>'
+					  + '</div>'
+				  }
+				  else{
+					  html += '<div class="ui right floated right labeled secondary basic icon button" id="mark-btn">Add for renting'				 
+					  + '<i class="plus icon"></i>'
+					  + '</div>'
+				  }
+				  
+				 html += '<div class="ui right floated primary button" id="detail-btn">Detail'				 
 				  + '<i class="right chevron icon"></i>'
 				  + '</div>';
+				 
+				 html += '<div class="ui right floated positive button" id="detail-btn">Rent'				 
+					  + '<i class="right chevron icon"></i>'
+					  + '</div>';
+				 
 				// categories
 				$.each(book.categories, function(index, category){					
 				  html+= '<div class="ui label">'				  
@@ -126,7 +144,7 @@ $(document).ready(function() {
 //			'data-id': book.id
 //		})
 		
-		$elem.find('.button').api({
+		$elem.find('#detail-btn').api({
 			action: 'view details',
 			urlData: {
 			      id: book.id
@@ -136,7 +154,28 @@ $(document).ready(function() {
 				setModalData(response);
 				
 			},			   
-		})
+		});
+		
+		
+		$elem.find('#mark-btn').api({
+			action: 'mark for renting',
+			urlData: {
+			      id: book.id
+			},
+			onSuccess: function(response) {
+			    	
+				if(response.success==='added'){
+					
+					$(this).removeClass('secondary').addClass('positive');
+					$(this).find('.icon').addClass('checkmark').removeClass('plus');
+				}
+				else if(response.success==='removed'){
+					$(this).removeClass('positive').addClass('secondary');
+					$(this).find('.icon').addClass('plus').removeClass('checkmark');
+				}
+			}
+			
+		});
 		
 		$('#search-results').append($elem);
 		$elem.fadeIn('300');
@@ -156,4 +195,4 @@ $(document).ready(function() {
 		
 		$modal.modal('show');
 	}
-})
+});

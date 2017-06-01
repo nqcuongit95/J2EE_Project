@@ -11,3 +11,4 @@
 <jsp:include page="/WEB-INF/pages/searching/search-results.jsp" />
 
 <jsp:include page="/WEB-INF/pages/searching/details-modal.jsp" />
+<jsp:include page="/WEB-INF/pages/searching/renting-modal.jsp" />

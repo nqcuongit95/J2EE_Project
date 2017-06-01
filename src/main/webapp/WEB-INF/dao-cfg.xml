@@ -13,5 +13,8 @@
      <property name="sessionFactory" ref="mySessionFactory" />
  </bean>
  
+ <bean id="bookRentingService" class="com.j2ee.project.services.implement.BookRentingServiceImpl">
+     <property name="sessionFactory" ref="mySessionFactory" />
+ </bean>
  
 </beans>

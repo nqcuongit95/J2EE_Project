@@ -28,7 +28,15 @@ public class BookData {
 	int id;
 	@JsonView(Views.Show.class)
 	BigDecimal rentPrice;
-	
+	@JsonView(Views.Show.class)
+	String added;
+		
+	public String getAdded() {
+		return added;
+	}
+	public void setAdded(String added) {
+		this.added = added;
+	}
 	public BigDecimal getRentPrice() {
 		return rentPrice;
 	}
