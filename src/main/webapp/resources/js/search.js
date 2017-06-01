@@ -21,6 +21,76 @@ $(document).ready(function() {
 		}
 		
 	});
+	
+	//renting form validation
+	$('#renting-form').form({
+		inline : true,
+		on: 'blur',
+		fields:{
+			fullName: {
+				identifier: 'fullName',
+				rules:[
+					{
+						type: 'empty',
+						prompt: 'Please enter full name'
+					},
+					{
+						type: 'maxLength[30]',
+						prompt: 'Full name can not exceed 30 characters' 
+					}
+				]
+			},
+			phone: {
+				identifier: 'phoneNumber',
+				rules:[
+					{
+						type: 'empty',
+						prompt: 'Please enter phone number '
+					},
+					{
+						type: 'regExp[^[0-9]*$]',
+						prompt: 'Please enter a valid phone number '
+					},
+					{
+						type: 'minLength[10]',
+						prompt: 'Please enter a valid phone number' 
+					},
+					{
+						type: 'maxLength[11]',
+						prompt: 'Please enter a valid phone number' 
+					}					
+				]
+			},
+			address: {
+				identifier: 'address',
+				rule: [
+					{
+						type: 'empty',
+						prompt: 'Please enter address'
+					}
+				]
+			},
+			borrowedDay: {
+				identifier: 'borrowed',
+				rule: [
+					{
+						type: 'empty',
+						prompt: 'Please select borrowed day'
+					}
+				]
+			},
+			returnDay: {
+				identifier: 'return',
+				rule: [
+					{
+						type: 'empty',
+						prompt: 'Please select return day'
+					}
+				]
+			}
+		}
+		
+	});
 
 	$('#searchForm .primary.button').on('click', function(event) {
 
@@ -192,6 +262,7 @@ $(document).ready(function() {
 							
 							$('#borrowedDay').calendar({
 								  type: 'date',
+								  initialDate: null,
 								  endCalendar: $('#returnDay')
 								});
 							$('#returnDay').calendar({
@@ -202,9 +273,15 @@ $(document).ready(function() {
 						}
 						
 					}).modal('show');
-										
+
+				}
+				else{
 					
+					var $notifyModal = $('#notifyModal');
+					$notifyModal.find('#msg-info').text("Error");
+					$notifyModal.find('#msg-content').text("You must add book in order to start renting.");
 					
+					$notifyModal.modal('show');
 				}
 					
 			},			   
@@ -241,7 +318,13 @@ $(document).ready(function() {
 	$('#renting-btn').on('click',function(event){
 		event.preventDefault();					
 		
-		renting();
+		var $rentingForm = $('#rentingModal .form'); 
+		$rentingForm.form('validate form');
+		
+		if ($rentingForm.form('is valid')) {
+			renting();
+		}
+				
 	})
 	
 	function renting(){
@@ -290,7 +373,7 @@ $(document).ready(function() {
 						}).modal('hide');
 						
 						
-					},1000)
+					},2000)
 				}
 				
 				//update loading status

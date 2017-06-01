@@ -7,7 +7,7 @@
 		<h4 class="ui horizontal divider header">
 			<i class="tag icon"></i> Payment
 		</h4>
-		<div class="ui form">
+		<div class="ui form" id="renting-form">
 			<div class="two fields">
 				<div class="field">
 					<label>Full Name</label> <input type="text" placeholder="FullName" id="fullName">
@@ -25,7 +25,7 @@
 					<div class="ui calendar" id="borrowedDay">
 			          <div class="ui input left icon">
 			            <i class="calendar icon"></i>
-			            <input type="text" placeholder="Start">
+			            <input type="text" placeholder="Start" name="borrowed">
 			          </div>
 			        </div>
 				</div>
@@ -34,7 +34,7 @@
 					<div class="ui calendar" id="returnDay">
 			          <div class="ui input left icon">
 			            <i class="calendar icon"></i>
-			            <input type="text" placeholder="End">
+			            <input type="text" placeholder="End" name="return">
 			          </div>
 			        </div>
 				</div>
