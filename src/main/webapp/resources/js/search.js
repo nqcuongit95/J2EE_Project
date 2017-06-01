@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	
-	
+			
 	$.fn.api.settings.api = {
 			  'view details' : baseUrl + 'book/details/{id}',
-			  'mark for renting' : baseUrl + '/book/renting/add/{id}'
+			  'mark for renting' : baseUrl + '/book/renting/add/{id}',
+			  'view order' : baseUrl + '/book/renting/order'
 			};	
 	
 	$('#book-category-input').dropdown({				
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		
 	});
 
-	$('#searchForm .primary.button').on('click', function() {
+	$('#searchForm .primary.button').on('click', function(event) {
 
 		event.preventDefault();
 				
@@ -121,7 +121,7 @@ $(document).ready(function() {
 				  + '<i class="right chevron icon"></i>'
 				  + '</div>';
 				 
-				 html += '<div class="ui right floated positive button" id="detail-btn">Rent'				 
+				 html += '<div class="ui right floated positive button" id="rent-btn">Rent'				 
 					  + '<i class="right chevron icon"></i>'
 					  + '</div>';
 				 
@@ -144,6 +144,7 @@ $(document).ready(function() {
 //			'data-id': book.id
 //		})
 		
+		//details modal
 		$elem.find('#detail-btn').api({
 			action: 'view details',
 			urlData: {
@@ -156,6 +157,59 @@ $(document).ready(function() {
 			},			   
 		});
 		
+		//renting modal
+		$elem.find('#rent-btn').api({
+			action: 'view order',			
+			onSuccess: function(response) {
+			    
+				if (response.success==="true") {
+					var $rentingModal = $('#rentingModal');
+					
+					var listRentingBook = '';
+					
+					$.each(response.results, function(index, bookData){
+						listRentingBook +='<div class="item" data-id="'+ bookData.id +'">'
+										  + '<div class="right floated content">'
+										  + '<div class="ui small button">Remove</div>'
+										  + '</div>'
+										  + '<img class="ui avatar image" src="' +defaultBookCoverUrl + '">'
+										  + '<div class="content">'
+										  + '<div class="header">'+bookData.title + '</div>'
+										  + 'Renting cost: ' + bookData.rentPrice +'$'
+										  + '</div>'
+										  + '</div>';
+					});
+					
+					$rentingModal.find('#list-rented-book').html(listRentingBook);
+					
+					$rentingModal.modal({
+						
+						onShow: function(){
+							//clear form data
+							$rentingModal.find('.ui.form').form('clear');
+						},
+						onVisible: function(){
+							
+							$('#borrowedDay').calendar({
+								  type: 'date',
+								  endCalendar: $('#returnDay')
+								});
+							$('#returnDay').calendar({
+								  type: 'date',
+								  startCalendar: $('#borrowedDay')
+								});
+																					
+						}
+						
+					}).modal('show');
+										
+					
+					
+				}
+					
+			},			   
+		});
+					
 		
 		$elem.find('#mark-btn').api({
 			action: 'mark for renting',
@@ -182,6 +236,77 @@ $(document).ready(function() {
 		});
 		
 	};
+	
+	//submit renting form
+	$('#renting-btn').on('click',function(event){
+		event.preventDefault();					
+		
+		renting();
+	})
+	
+	function renting(){
+		
+		var renting = {};
+		renting["readerName"] = $('#fullName').val();
+		renting["phone"] = $('#phoneNumber').val();
+		renting["address"] = $('#address').val();
+		renting["note"] = $('#note').val();
+		renting["borrowedDate"] = $('#borrowedDay').calendar('get date');
+		renting["returnDate"] = $('#returnDay').calendar('get date');
+		
+		var listBook = [];
+		$('#list-rented-book .item').each(function(){
+			var bookId = $(this).attr('data-id');
+			listBook.push(bookId);
+		});
+		
+		renting["listRentingBook"] = listBook;
+		
+		$.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url : baseUrl + "book/renting/process",
+			data : JSON.stringify(renting),
+			dataType : 'json',
+			// timeout : 100000,
+			success : function(data) {
+				console.log("SUCCESS: ", data);
+				
+				if (data.success==="true") {
+					var $notifyModal = $('#notifyModal');
+					
+					$notifyModal.find('#msg-info').text("Success");
+					$notifyModal.find('#msg-content').text("Successfully add reader for book renting.");
+					
+					$notifyModal.modal('show');
+					
+					setTimeout(function(){
+						
+						$notifyModal.modal({
+							onHidden: function(){
+								$('#rentingModal').modal('hide');
+								location.reload();
+							}
+						}).modal('hide');
+						
+						
+					},1000)
+				}
+				
+				//update loading status
+				//$('#divider-result i').removeClass('spinner loading');
+				//$('#divider-result i').addClass('search');
+								
+				
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+			},
+			done : function(e) {
+				console.log("DONE");
+			}
+		});
+	}
 	
 	function setModalData(response){
 		var $modal = $('#bookModal');

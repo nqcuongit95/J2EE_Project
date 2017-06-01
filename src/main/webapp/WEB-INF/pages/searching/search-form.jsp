@@ -44,5 +44,3 @@
 	var baseUrl = "${home}";
 	var defaultBookCoverUrl = "${defaultBookCoverUrl}";
 </script>
-
-<script src="<c:url value="/resources/js/search.js" />"></script>

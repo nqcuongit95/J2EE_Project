@@ -15,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.j2ee.project.services.BookSearchingService;
 
 @Controller
+@SessionAttributes("rentingList")
 public class SearchController {
 
 	@Autowired

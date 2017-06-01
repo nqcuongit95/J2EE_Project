@@ -11,7 +11,9 @@
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
         <mapping class="com.j2ee.project.entities.Thongtinmuonsach"/>
+        <mapping class="com.j2ee.project.entities.User"/>
         <mapping class="com.j2ee.project.entities.Chitietthongtinmuonsach"/>
+        <mapping class="com.j2ee.project.entities.Authority"/>
         <mapping class="com.j2ee.project.entities.Sach"/>
     </session-factory>
 </hibernate-configuration>

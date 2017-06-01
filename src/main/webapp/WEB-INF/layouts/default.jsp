@@ -2,15 +2,20 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<link
-	href="<c:url value="/resources/css/default.css" />"
+<link href="<c:url value="/resources/css/default.css" />"
 	rel="stylesheet">
 <link
 	href="<c:url value="/resources/css/semantic-ui/dist/semantic.css" />"
 	rel="stylesheet">
-<script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
-<script
+<link href="<c:url value="/resources/js/calendar.css" />"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
+<script type="text/javascript"
 	src="<c:url value="/resources/css/semantic-ui/dist/semantic.min.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/calendar.js" />"></script>
+
 <meta charset="UTF-8">
 
 <title><tiles:getAsString name="title" /></title>
@@ -18,11 +23,13 @@
 </head>
 
 <body>
+
 	<tiles:insertAttribute name="header" />
 	<div class="ui main container">
-	<tiles:insertAttribute name="body" />
+		<tiles:insertAttribute name="body" />
 	</div>
 	<tiles:insertAttribute name="footer" />
+	
 </body>
 
 </html>

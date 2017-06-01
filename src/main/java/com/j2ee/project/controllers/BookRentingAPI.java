@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.j2ee.project.entities.search.ApiResult;
 import com.j2ee.project.entities.search.BookData;
 import com.j2ee.project.services.BookRentingService;
+import com.j2ee.project.entities.rentingorder.RentingOrder;
 
 @RestController
 @SessionAttributes("rentingList")
@@ -62,4 +64,36 @@ public class BookRentingAPI {
 			}
 		}
 	}
+	
+	@RequestMapping(value = "/book/renting/order")
+	public ApiResult<BookData> RentingOrder(HttpSession session) {
+		
+		ApiResult<BookData> result;
+
+		List<Integer> listRenting =  (List<Integer>)session.getAttribute("rentingList");
+		
+		if (listRenting!=null && !listRenting.isEmpty()) {
+			
+			result = bookRentingService.GetListRenting(listRenting);
+			
+			return result;
+		}
+		else{
+			
+			result = new ApiResult<BookData>();
+			result.setSuccess("false");
+			
+			return result;
+		}
+				
+	}
+	
+	@RequestMapping(value = "/book/renting/process")
+	public ApiResult<String> ProcessOrder(@RequestBody RentingOrder order) {
+		
+		ApiResult<String> result = bookRentingService.ProcessRenting(order);
+		 		
+		return result;			
+	}
+
 }

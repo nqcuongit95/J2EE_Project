@@ -12,3 +12,6 @@
 
 <jsp:include page="/WEB-INF/pages/searching/details-modal.jsp" />
 <jsp:include page="/WEB-INF/pages/searching/renting-modal.jsp" />
+<jsp:include page="/WEB-INF/pages/searching/notification.jsp" />
+
+<script src="<c:url value="/resources/js/search.js" />"></script>
