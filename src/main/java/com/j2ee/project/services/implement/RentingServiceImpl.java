@@ -17,10 +17,10 @@ import com.j2ee.project.entities.Thongtinmuonsach;
 import com.j2ee.project.entities.rentingorder.RentingOrder;
 import com.j2ee.project.entities.search.ApiResult;
 import com.j2ee.project.entities.search.BookData;
-import com.j2ee.project.services.BookRentingService;
+import com.j2ee.project.services.RentingService;
 
 @Transactional
-public class BookRentingServiceImpl implements BookRentingService {
+public class RentingServiceImpl implements RentingService {
 
 	private SessionFactory sessionFactory;
 

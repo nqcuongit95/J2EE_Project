@@ -21,7 +21,7 @@ import com.j2ee.project.entities.search.BookData;
 import com.j2ee.project.entities.search.DropdownData;
 import com.j2ee.project.entities.search.SearchingBookQuery;
 import com.j2ee.project.entities.search.SearchingBookResults;
-import com.j2ee.project.services.BookRentingService;
+import com.j2ee.project.services.RentingService;
 import com.j2ee.project.services.BookSearchingService;
 import com.j2ee.project.entities.Sach;
 

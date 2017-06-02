@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.j2ee.project.entities.search.ApiResult;
 import com.j2ee.project.entities.search.BookData;
-import com.j2ee.project.services.BookRentingService;
+import com.j2ee.project.services.RentingService;
 import com.j2ee.project.entities.rentingorder.RentingOrder;
 
 @RestController
@@ -23,7 +23,7 @@ import com.j2ee.project.entities.rentingorder.RentingOrder;
 public class BookRentingAPI {
 
 	@Autowired
-	private BookRentingService bookRentingService;
+	private RentingService bookRentingService;
 
 	@RequestMapping(value = "/book/renting/add/{id}")
 	public ApiResult<String> MarkForRenting(Model model, HttpSession session, @PathVariable int id) {
