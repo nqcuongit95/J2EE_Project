@@ -4,7 +4,7 @@
 		<a href="#" class="header item"> <img class="logo"			
 			src="<c:url value="/resources/img//logo.jpg" />">Bookstore Renting</a> 
 		<a href="#" class="item">Home</a> 
-		<a href="#" class="item">Book
+		<a href="<c:url value="/book" />" class="item">Book
 			Management</a> <a href="#" class="item">Book Renting</a> 
 		<a href="#" class="item">Searching</a>
 		<div class="right menu">
