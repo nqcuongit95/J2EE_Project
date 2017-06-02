@@ -19,6 +19,13 @@
 		<put-attribute name="body" value="/WEB-INF/pages/index.jsp" />
 	</definition>
 
+	<!-- Searching Page -->
+	<definition name="searchPage" extends="base.definition">
+		<put-attribute name="title" value="Searching Books" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/searching/search.jsp" />
+	</definition>	
+
 	<!-- ContactUs Page -->
 	<definition name="contactusPage" extends="base.definition">
 		<put-attribute name="title" value="Contact Us" />

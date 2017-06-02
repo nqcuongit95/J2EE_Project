@@ -1,5 +1,5 @@
 package com.j2ee.project.entities;
-// Generated May 22, 2017 11:53:47 AM by Hibernate Tools 5.2.3.Final
+// Generated Jun 1, 2017 7:35:56 PM by Hibernate Tools 5.2.3.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,14 +21,14 @@ public class Chitietthongtinmuonsach implements java.io.Serializable {
 	private Integer id;
 	private Integer chiTietThongTinMuonSachId;
 	private String sachId;
-	private String ngayMuon;
+	private Date ngayMuon;
 	private Date ngayTra;
 	private String ghiChu;
 
 	public Chitietthongtinmuonsach() {
 	}
 
-	public Chitietthongtinmuonsach(Integer chiTietThongTinMuonSachId, String sachId, String ngayMuon, Date ngayTra,
+	public Chitietthongtinmuonsach(Integer chiTietThongTinMuonSachId, String sachId, Date ngayMuon, Date ngayTra,
 			String ghiChu) {
 		this.chiTietThongTinMuonSachId = chiTietThongTinMuonSachId;
 		this.sachId = sachId;
@@ -67,12 +67,13 @@ public class Chitietthongtinmuonsach implements java.io.Serializable {
 		this.sachId = sachId;
 	}
 
-	@Column(name = "NgayMuon", length = 20)
-	public String getNgayMuon() {
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "NgayMuon", length = 19)
+	public Date getNgayMuon() {
 		return this.ngayMuon;
 	}
 
-	public void setNgayMuon(String ngayMuon) {
+	public void setNgayMuon(Date ngayMuon) {
 		this.ngayMuon = ngayMuon;
 	}
 
