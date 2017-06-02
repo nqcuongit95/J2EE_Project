@@ -13,6 +13,7 @@ import org.hibernate.query.Query;
 import com.j2ee.project.entities.Chitietthongtinmuonsach;
 import com.j2ee.project.entities.Sach;
 import com.j2ee.project.entities.Thongtinmuonsach;
+import com.j2ee.project.entities.renting.NotifyData;
 import com.j2ee.project.entities.renting.RentingData;
 import com.j2ee.project.services.BookRentingService;
 
@@ -50,7 +51,15 @@ public class BookRentingServiceImpl implements BookRentingService {
 		List<Chitietthongtinmuonsach> list = query.list();
 		return list;
 	}
-
+	public Thongtinmuonsach getInfoByIdOrPhone(String id) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String sql = "Select a from Thongtinmuonsach a where a.id =" + id +"or a.soDienThoai = "+id;
+		@SuppressWarnings("unchecked")
+		Query<Thongtinmuonsach> query = session.createQuery(sql);
+		Thongtinmuonsach info = query.getSingleResult();
+		return info;
+	}
 	public Thongtinmuonsach getInfoByID(int id) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
@@ -91,16 +100,27 @@ public class BookRentingServiceImpl implements BookRentingService {
 		return result;
 	}
 
-	public void returnBook(int thongTinMuonId) {
+	public NotifyData returnBook(int thongTinMuonId) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
+		
+		NotifyData result = new NotifyData();
+		
 		List<Chitietthongtinmuonsach> details = getDetailsByInfoID(thongTinMuonId);
 		for (Chitietthongtinmuonsach obj : details) {
-//			Date current = new Date();
-//			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
-//			obj.setNgayTra(dateFormat.format(current));
+			String sql = "Select a from Sach a where a.id =" + obj.getSachId();
+			@SuppressWarnings("unchecked")
+			Query<Sach> query = session.createQuery(sql);
+			Sach info = query.getSingleResult();
+			info.setSoBan(info.getSoBan()+1);
 			 obj.setNgayTra(new Date());
+			 session.saveOrUpdate(info);
 			 session.saveOrUpdate(obj);
 		}
+		
+		result.setSuccess("true");
+		result.setContent("Successfully return books");
+		result.setHeader("Success");
+		return result;
 	}
 }

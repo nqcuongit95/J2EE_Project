@@ -1,5 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:url var="home" value="/" />
+<%@ page import="com.j2ee.project.entities.Chitietthongtinmuonsach" %> 
+<%@ page import="java.util.List" %> 
 <div id="home-body-div">
 	<div class="ui grid">
 		<div class="row">
@@ -32,9 +34,10 @@
 								<td>${item.ngayTra}</td>
 							</tr>
 						</c:forEach>
-
+						
 					</tbody>
 				</table>
+				<input type="hidden" value="${data[0].ngayTra}" id="date"></input>
 			</div>
 			<div class="four wide column">
 				<h3>Borrower information</h3>
@@ -61,26 +64,23 @@
 			</div>
 		</div>
 	</div>
+</div>
 
+<div class="ui modal" id="notifyModal">
+	<div class="header" id="msg-info"></div>
+	<div class="content">
+		<p id="msg-content"></p>
+	</div>
+	<div class="actions">
+		<div class="ui positive right labeled icon button">
+			Done <i class="checkmark icon"></i>
+		</div>
+	</div>
 </div>
 
 <script>
-	$("#back").click(function() {
-		window.history.back();
-	});
-	$("#return").click(function() {		
-		//$.get('returnbookrenting', {
-		//	id : $("#thongtinid").val()
-		//}, function(response) {	
-		//	alert("asdasdas dddddddddddddd")
-		//});
-		$.ajax({
-            url : "/BookstoreRenting/returnbookrenting",
-            data: { id : $("#thongtinid").val() },
-            success : 
-                function(response) {
-            	alert("asdasdas dddddddddddddd")
-                }
-    });
-	});
+	var baseUrl = "${home}";
+	
 </script>
+
+<script src="<c:url value="/resources/js/bookRenting.js" />"></script>

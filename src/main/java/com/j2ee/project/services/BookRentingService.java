@@ -13,5 +13,6 @@ public interface BookRentingService {
 	public Thongtinmuonsach getInfoByID(int id);
 	public List<RentingData> getBookBorrowed(int id);
 	public Long count() ;
-	public void returnBook(int thongTinMuonId);
+	public NotifyData returnBook(int thongTinMuonId);
+	public Thongtinmuonsach getInfoByIdOrPhone(String id);
 } 
