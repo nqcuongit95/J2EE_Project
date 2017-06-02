@@ -14,3 +14,8 @@ body {
     margin: 5em 0em 0em;
     padding: 5em 0em;
   }
+  
+ .clock {
+    zoom: 0.3;
+    -moz-transform: scale(0.5);
+  }

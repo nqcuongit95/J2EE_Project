@@ -4,6 +4,8 @@
 <head>
 <link href="<c:url value="/resources/css/default.css" />"
 	rel="stylesheet">
+<link href="<c:url value="/resources/js/clock/flipclock.css" />"
+	rel="stylesheet">
 <link
 	href="<c:url value="/resources/css/semantic-ui/dist/semantic.css" />"
 	rel="stylesheet">
@@ -15,6 +17,8 @@
 	src="<c:url value="/resources/css/semantic-ui/dist/semantic.min.js" />"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/calendar.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/clock/flipclock.js" />"></script>
 
 <meta charset="UTF-8">
 
@@ -29,6 +33,8 @@
 		<tiles:insertAttribute name="body" />
 	</div>
 	<tiles:insertAttribute name="footer" />
+	
+	<script src="<c:url value="/resources/js/clock.js" />"></script>
 	
 </body>
 
