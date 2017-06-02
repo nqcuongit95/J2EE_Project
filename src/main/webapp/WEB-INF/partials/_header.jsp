@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:useBean id="date" class="java.util.Date" />
 
-<div class="ui fixed inverted menu">
+<div class="ui fixed inverted menu" id="main-menu">
 	<div class="ui container">
 		<a href="<c:url value="/" />" class="header item"> 
 			<img class="logo"

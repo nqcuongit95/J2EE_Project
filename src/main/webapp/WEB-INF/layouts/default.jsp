@@ -13,8 +13,6 @@
 	rel="stylesheet">
 <link href="<c:url value="/resources/js/textillate/animate.css" />"
 	rel="stylesheet">
-<link href="<c:url value="/resources/js/textillate/style.css" />"
-	rel="stylesheet">
 
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
