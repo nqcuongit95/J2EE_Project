@@ -9,11 +9,23 @@
 			src="<c:url value="/resources/img/logo.jpg" />" style="margin-right:1.4em">
 			Bookstore Renting
 		</a> 
-		<a href="<c:url value="/" />" class="item">Home</a> 
-		<a href="<c:url value="/book" />"
-			class="item">Book Management</a> <a href="#" class="item">Book
-			Renting</a> 
-		<a href="<c:url value="/search" />" class="item">Searching</a>
+		<a href="<c:url value="/" />" class="item">
+			<i class="home icon"></i>
+			Home
+		</a> 
+		<a href="<c:url value="/book" />" class="item">
+			<i class="book icon"></i>
+			Book Management
+		</a> 
+		<a href="#" class="item">
+			<i class="area chart icon"></i>
+			Book Renting
+		</a> 
+		<a href="<c:url value="/search" />" class="item">
+			<i class="book icon"></i>
+			
+			Searching
+		</a>
 		
 		<div class="right menu">			
 			<h5 class="ui inverted header item">

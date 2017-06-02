@@ -11,6 +11,11 @@
 	rel="stylesheet">
 <link href="<c:url value="/resources/js/calendar.css" />"
 	rel="stylesheet">
+<link href="<c:url value="/resources/js/textillate/animate.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/js/textillate/style.css" />"
+	rel="stylesheet">
+
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
 <script type="text/javascript"
@@ -19,6 +24,12 @@
 	src="<c:url value="/resources/js/calendar.js" />"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/clock/flipclock.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/textillate/jquery.fittext.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/textillate/jquery.lettering.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/textillate/jquery.textillate.js" />"></script>
 
 <meta charset="UTF-8">
 
@@ -33,9 +44,9 @@
 		<tiles:insertAttribute name="body" />
 	</div>
 	<tiles:insertAttribute name="footer" />
-	
+
 	<script src="<c:url value="/resources/js/clock.js" />"></script>
-	
+	<script src="<c:url value="/resources/js/pagestyle.js" />"></script>
 </body>
 
 </html>
