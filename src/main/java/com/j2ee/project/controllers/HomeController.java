@@ -20,7 +20,7 @@ public class HomeController {
  @Autowired
  private DepartmentService departmentDAO;
  
- @RequestMapping({ "/", "/home", "/index" })
+ @RequestMapping({ "/", "/home", "/b" })
  public String home(Model model) {
      return "homePage";
  }
