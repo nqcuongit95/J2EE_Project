@@ -38,7 +38,7 @@
 								<td>${item.diaChi}</td>
 								<td>${item.ghiChu}</td>
 								<td>${item.ngayTao}</td>
-								<td><a href="<c:url value='/bookrenting/${item.id}' />">Details</a></td>
+								<td><a class="ui blue label" href="<c:url value='/bookrenting/${item.id}' />">Details</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
