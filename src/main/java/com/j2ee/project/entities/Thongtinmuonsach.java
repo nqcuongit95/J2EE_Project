@@ -24,6 +24,7 @@ public class Thongtinmuonsach implements java.io.Serializable {
 	private String soDienThoai;
 	private Date ngayTao;
 	private String ghiChu;
+	
 
 	public Thongtinmuonsach() {
 	}

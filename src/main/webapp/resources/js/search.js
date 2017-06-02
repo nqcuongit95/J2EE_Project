@@ -163,9 +163,14 @@ $(document).ready(function() {
 		$.each(data.results, function(index, book){
 			
 		var html ='<div class="item" style="display: none;">'
-				  + '<div class="image">'		  
-				  + '<img src="' + defaultBookCoverUrl + '">'
-				  + '</div>'
+				  + '<div class="image">';
+				if(book.imageUrl != null){
+					html += '<img src="' + baseUrl + book.imageUrl + '">';				  
+				}
+				else{
+					html += '<img src="' + defaultBookCoverUrl + '">';
+				} 			 
+			html += '</div>'
 				  + '<div class="content">'
 				  + '<a class="header">'+ book.title +'</a>'
 				  + '<div class="meta">'
@@ -238,11 +243,17 @@ $(document).ready(function() {
 					var listRentingBook = '';
 					
 					$.each(response.results, function(index, bookData){
+						
+						var imgUrl= defaultBookCoverUrl;
+						if(bookData.imageUrl != null){
+							imgUrl = baseUrl + bookData.imageUrl;
+						}
+						
 						listRentingBook +='<div class="item" data-id="'+ bookData.id +'">'
 										  + '<div class="right floated content">'
 										  + '<div class="ui small button">Remove</div>'
 										  + '</div>'
-										  + '<img class="ui avatar image" src="' +defaultBookCoverUrl + '">'
+										  + '<img class="ui avatar image" src="' +imgUrl + '">'
 										  + '<div class="content">'
 										  + '<div class="header">'+bookData.title + '</div>'
 										  + 'Renting cost: ' + bookData.rentPrice +'$'

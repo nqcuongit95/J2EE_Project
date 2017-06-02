@@ -46,6 +46,7 @@ public class RentingServiceImpl implements RentingService {
 			b.setId(book.get(0).getId());
 			b.setRentPrice(book.get(0).getGiaMuon());
 			b.setTitle(book.get(0).getTen());
+			b.setImageUrl(book.get(0).getImageUrl());
 			
 			listBook.add(b);
 		}
@@ -72,7 +73,7 @@ public class RentingServiceImpl implements RentingService {
 		for (int bookId : order.getListRentingBook()) {
 			Chitietthongtinmuonsach detail = new Chitietthongtinmuonsach();
 			detail.setNgayMuon(order.getBorrowedDate());
-			detail.setNgayTra(order.getReturnDate());
+			
 			detail.setSachId(Integer.toString(bookId));
 			detail.setChiTietThongTinMuonSachId(info.getId());
 			session.save(detail);

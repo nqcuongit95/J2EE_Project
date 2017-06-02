@@ -17,7 +17,7 @@
 			<i class="book icon"></i>
 			Book Management
 		</a> 
-		<a href="#" class="item">
+		<a href="<c:url value="/bookrenting" />" class="item">
 			<i class="area chart icon"></i>
 			Book Renting
 		</a> 

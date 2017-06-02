@@ -40,6 +40,7 @@
 		<h4 class="ui dividing header">Book Information</h4>
 
 		<input type="hidden" name="id" value="${sach.id}">
+		<input type="hidden" name="imageUrl" value="${sach.imageUrl}">
 
 		<div class="two fields">
 			<div class="field">

@@ -29,7 +29,7 @@
 			          </div>
 			        </div>
 				</div>
-				<div class="field">
+				<!-- <div class="field">
 					<label>Return Day</label>
 					<div class="ui calendar" id="returnDay">
 			          <div class="ui input left icon">
@@ -37,7 +37,7 @@
 			            <input type="text" placeholder="End" name="return">
 			          </div>
 			        </div>
-				</div>
+				</div> -->
 			</div>
 			<div class="field">
 				<label>Note</label>

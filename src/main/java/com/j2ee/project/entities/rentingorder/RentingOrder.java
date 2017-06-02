@@ -10,7 +10,7 @@ public class RentingOrder {
 	String address;
 	String note;
 	Date borrowedDate;
-	Date returnDate;
+	
 	List<Integer> listRentingBook;
 	
 	public Date getBorrowedDate() {
@@ -19,12 +19,8 @@ public class RentingOrder {
 	public void setBorrowedDate(Date borrowedDate) {
 		this.borrowedDate = borrowedDate;
 	}
-	public Date getReturnDate() {
-		return returnDate;
-	}
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
-	}
+	
+	
 	public String getReaderName() {
 		return readerName;
 	}

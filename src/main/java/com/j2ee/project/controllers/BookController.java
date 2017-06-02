@@ -220,14 +220,14 @@ public class BookController {
 				sach.setImageUrl(filePath);
 
 				this.sachService.updateSach(sach);
-
-				modelAndView.addObject("sach", sach);
-
-				modelAndView.setView(new RedirectView("/book/details?id=" + sach.getId(), true));
 			} catch (Exception e) {
 			}
 		} else {
 		}
+		
+		modelAndView.addObject("sach", sach);
+
+		modelAndView.setView(new RedirectView("/book/details?id=" + sach.getId(), true));
 
 		return modelAndView;
 	}
