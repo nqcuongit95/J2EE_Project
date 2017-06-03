@@ -9,7 +9,8 @@ $(document).ready(function() {
 	$('#book-category-input').dropdown({				
 		apiSettings: {
 			url: baseUrl + "/search/findCategory?query={query}",
-			saveRemoteData: 'false',			
+			saveRemoteData: 'false',
+			cache: 'false'
 		}
 		
 	});
@@ -17,7 +18,8 @@ $(document).ready(function() {
 	$('#book-author-input').dropdown({				
 		apiSettings: {
 			url: baseUrl + "/search/findAuthor?query={query}",
-			saveRemoteData: 'false',			
+			saveRemoteData: 'false',	
+			cache: 'false'
 		}
 		
 	});
