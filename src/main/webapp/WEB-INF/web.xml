@@ -17,7 +17,6 @@
        <servlet-name>spring-mvc</servlet-name>
        <url-pattern>/</url-pattern>
    </servlet-mapping>
- 
    <!-- Other XML Configuration -->
    <!-- Load by Spring ContextLoaderListener -->
    <context-param>

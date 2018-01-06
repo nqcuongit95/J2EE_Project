@@ -231,13 +231,4 @@ public class BookController {
 
 		return modelAndView;
 	}
-
-	// private boolean validateBook(Sach sach){
-	// if(sach.getMaSach().isEmpty()
-	// || sach.getNgayTao() == null
-	// || sach.getSoBan()<0
-	// || sach.g)
-	//
-	// return true;
-	// }
 }
